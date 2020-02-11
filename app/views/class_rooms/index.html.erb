@@ -1,0 +1,13 @@
+<h1>Classes Menu</h1>
+
+<h3>Classes Open</h3>
+    <ul>
+        <% if @class_rooms.empty? %>
+            <p>No classes Open</p>
+        <% else %>
+            <% @class_room.each do |class_room| %>
+                <p><%= link_to class_room.subject.name, class_room_path %></p>
+            <% end %>
+        <% end %>
+    </ul>
+<p><%= link_to "Add new class", new_class_room_path %></p>
