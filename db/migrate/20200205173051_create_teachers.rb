@@ -6,7 +6,6 @@ class CreateTeachers < ActiveRecord::Migration[6.0]
       t.integer :qualification_id
       t.integer :class_id
       t.integer :student_id
-      t.integer :subject_id
 
       t.timestamps
     end

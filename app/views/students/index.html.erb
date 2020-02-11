@@ -1,0 +1,11 @@
+<h3>Students Attending</h3>
+    <ul>
+        <% if @students.empty? %>
+            <p>No Students Yet</p>
+        <% else %>
+            <% @students.each do |student| %>
+                <p><%= link_to student.name, student_path(student.id) %> - In Development</p>
+            <% end %>
+        <% end %>
+    </ul>
+<p><%= link_to "Add Student", new_student_path %></p>

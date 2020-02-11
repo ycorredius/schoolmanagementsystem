@@ -13,6 +13,7 @@
     <h1>School Management System</h1>
     <nav>
       <% if current_admin %>
+      <p><%= link_to "Home", admin_path(current_admin) %></p>
       <%= button_to 'Sign Out', destroy_admin_session_path , {method: 'delete'} %>
       <% end %>
     </nav>

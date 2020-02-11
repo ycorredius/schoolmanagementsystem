@@ -1,0 +1,11 @@
+<h3>Teachers </h3>
+    <ul>
+        <% if @teachers %>
+            <p>No teachers hired</p>
+        <% else %>
+            <% @teacher.each do |teacher| %>
+                <p><%= link_to teacher.name, teacher_path(teacher.id) %></p>
+            <% end %>
+        <% end %>
+    </ul>
+<p><%= link_to "Add New Teacher", new_teacher_path %></p>
