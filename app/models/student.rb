@@ -1,4 +1,7 @@
 class Student < ApplicationRecord
-    has_many :classrooms
-    has_many :teachers, through: :classrooms
+
+
+    def name
+        self.first_name + " "+ self.last_name
+    end
 end
