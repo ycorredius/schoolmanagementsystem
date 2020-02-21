@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
+gem 'dotenv-rails', groups: [:development, :test]
 ruby '2.6.1'
 gem 'pg', '~> 1.2', '>= 1.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -22,7 +22,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pry'
-gem 'dot_env', '~> 0.0.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
