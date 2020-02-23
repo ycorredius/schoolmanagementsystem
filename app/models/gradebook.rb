@@ -1,0 +1,2 @@
+class Gradebook < ApplicationRecord
+end
