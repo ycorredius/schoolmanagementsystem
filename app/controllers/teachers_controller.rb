@@ -9,6 +9,18 @@ class TeachersController < ApplicationController
        @teacher = Teacher.find_by(id: params[:id]) 
     end
     def create
-        @teacher = Teacher.new
+        @teacher = Teacher.new(teacher_params)
+        binding.pry
+        if @teacher.save
+            redirect_to teacher_path(@teacher.id)
+        else
+            render :new
+        end
+    end
+
+    private
+
+    def teacher_params
+        params.require(:teacher).permit(:first_name,:last_name,:email)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_141446) do
+ActiveRecord::Schema.define(version: 2020_02_23_183902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2020_02_06_141446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "gradebooks", force: :cascade do |t|
+    t.string "letter_grade"
+    t.integer "number_grade"
+    t.integer "class_room_id"
+    t.integer "teacher_id"
+    t.integer "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "qualifications", force: :cascade do |t|
     t.string "title"
     t.integer "teacher_id"
@@ -60,11 +70,10 @@ ActiveRecord::Schema.define(version: 2020_02_06_141446) do
   create_table "teachers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "qualification_id"
-    t.integer "class_id"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.integer "qualification_id"
   end
 
 end
