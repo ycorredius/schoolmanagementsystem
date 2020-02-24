@@ -1,3 +1,7 @@
 <h1><%= @class_room.name %></h1>
 
-<h3>In Development</h3>
+<%= @class_room.teacher.name %>
+
+<% @class_room.students.each do |student| %>
+    <%= student.name %>
+<% end %>

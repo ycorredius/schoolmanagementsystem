@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
   resources :class_rooms
+  get 'add_student', to: 'class_room#new_student'
 end

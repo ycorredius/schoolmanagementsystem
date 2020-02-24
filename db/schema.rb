@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_162000) do
+ActiveRecord::Schema.define(version: 2020_02_24_172323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_162000) do
 
   create_table "class_rooms", force: :cascade do |t|
     t.integer "size", default: 20
-    t.string "grade"
     t.string "name"
-    t.string "subject"
     t.integer "teacher_id"
     t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_162000) do
 
   create_table "gradebooks", force: :cascade do |t|
     t.string "letter_grade"
-    t.integer "number_grade"
     t.integer "class_room_id"
     t.integer "teacher_id"
     t.integer "student_id"
@@ -74,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_162000) do
     t.integer "class_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "class_room_id"
   end
 
   create_table "teachers", force: :cascade do |t|

@@ -1,0 +1,14 @@
+<h1>Add Class</h1>
+<%= form_for @class_room do |f| %>
+    <%= f.label :name, 'Class Name' %>
+    <br>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :teacher_id, 'Select Teacher' %>
+    <br>
+    <%= collection_select(:class_room, :teacher_id, Teacher.all, :id,:name) %>
+    <br>
+    <br>
+    <%= f.submit %>
+<% end %>
