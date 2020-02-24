@@ -1,5 +1,5 @@
 class ClassRoom < ApplicationRecord
-    has_one :teacher
+    belongs_to :teacher
     has_many :students
-    has_one :gradebook
+    belongs_to :gradebook
 end
