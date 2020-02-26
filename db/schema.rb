@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_172323) do
+ActiveRecord::Schema.define(version: 2020_02_25_174011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "school_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -48,11 +47,10 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
   create_table "gradebooks", force: :cascade do |t|
     t.string "letter_grade"
     t.integer "class_room_id"
-    t.integer "teacher_id"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "assignment_id"
+    t.integer "grades_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -67,11 +65,10 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
     t.string "last_name"
     t.string "age"
     t.string "email"
-    t.integer "teacher_id"
-    t.integer "class_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "class_room_id"
+    t.bigint "class_room_id"
+    t.index ["class_room_id"], name: "index_students_on_class_room_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -83,4 +80,5 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
     t.integer "qualification_id"
   end
 
+  add_foreign_key "students", "class_rooms"
 end

@@ -10,9 +10,9 @@ class ClassRoomsController < ApplicationController
     end
 
     def create
-        @class_room = ClassRoom.new(class_params).build_gradebook()
+        @class_room = ClassRoom.new(class_params)
         if @class_room.save
-            # @class_room.create_gradebook()
+            @class_room.create_gradebook()
             redirect_to class_room_path(@class_room.id)
         else
             render :new
@@ -22,8 +22,9 @@ class ClassRoomsController < ApplicationController
     def show
     end
 
-    def new_student
-        @student
+    def add_student_to_class
+        
+
     end
 
     def find_classroom
