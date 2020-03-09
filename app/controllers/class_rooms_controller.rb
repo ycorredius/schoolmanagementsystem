@@ -10,7 +10,7 @@ class ClassRoomsController < ApplicationController
     end
 
     def create
-        @class_room = ClassRoom.new(class_params)
+        @class_room = ClassRoom.new(class_params).build_gradebook()
         if @class_room.save
             redirect_to class_room_path(@class_room.id)
         else

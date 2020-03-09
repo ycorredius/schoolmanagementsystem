@@ -8,6 +8,8 @@ class ClassRoom < ApplicationRecord
     accepts_nested_attributes_for :students
     
     validates :student_id, uniqueness: true
+    has_many :students
+    belongs_to :gradebook
 
     def add_students(student_obj)
         if self.size > 0

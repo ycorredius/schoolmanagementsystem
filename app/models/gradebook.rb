@@ -1,5 +1,6 @@
 class Gradebook < ApplicationRecord
-    belongs_to :student
-    has_many :grades
-    has_many :assignments, through: :grades
+    has_one :classroom
+    has_one :teacher, dependent: :classroom
+    has_many :students, through: :classroom
+    has_many :assignments
 end

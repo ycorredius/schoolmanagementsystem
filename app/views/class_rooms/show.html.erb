@@ -1,5 +1,6 @@
 <h1><%= @class_room.subject %></h1>
 
+<%= @class_room.teacher.name %>
 
 <p><strong>Teahcer <%= @class_room.teacher.name %></strong></p>
 <% if !@class_rooms.students.nil? ||@class_rooms.students%>
