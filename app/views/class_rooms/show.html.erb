@@ -1,3 +1,16 @@
 <h1><%= @class_room.name %></h1>
 
-<h3>In Development</h3>
+
+<p><strong>Teahcer <%= @class_room.teacher.name %></strong></p>
+<% if !@class_room.students.empty? %>
+    <ul>
+    <% @class_room.students.each do |student| %>
+        <p><%= link_to student.name%></p>
+    <% end %>
+</ul>
+<% else %>
+    <p>No students currently</p>
+<% end %> 
+<% if !@class_room.is_full %>
+    <%= link_to 'Add Students', add_student_path %>
+<% end %>

@@ -5,8 +5,8 @@
         <% if @class_rooms.empty? %>
             <p>No classes Open</p>
         <% else %>
-            <% @class_room.each do |class_room| %>
-                <p><%= link_to class_room.subject.name, class_room_path %></p>
+            <% @class_rooms.each do |class_room| %>
+                <p><%= link_to class_room.name, class_room_path(class_room.id) %></p>
             <% end %>
         <% end %>
     </ul>
