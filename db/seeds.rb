@@ -20,4 +20,3 @@ Student.create([
 Student.all.each do |student|
     student.create_gradebook
 end
-Teacher.create([{first_name: "Charlie", last_name:"doe",email:"doe1@gmail.com"}, {first_name: "Susie", last_name:"doe",email:"doe2@gmail.com"},{first_name: "Cindy", last_name:"doe",email:"doe3@gmail.com"}])

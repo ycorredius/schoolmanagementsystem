@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_03_08_235702) do
-=======
-ActiveRecord::Schema.define(version: 2020_02_24_172323) do
->>>>>>> parent of f93d5a0... progessing on gradebook functionality
+ActiveRecord::Schema.define(version: 2020_03_09_023600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +30,11 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
-    t.string "number_grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "class_rooms_id"
+    t.integer "number_grade"
+    t.index ["class_rooms_id"], name: "index_assignments_on_class_rooms_id"
   end
 
   create_table "class_rooms", force: :cascade do |t|
@@ -51,8 +49,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
   create_table "gradebooks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "students_id"
-    t.index ["students_id"], name: "index_gradebooks_on_students_id"
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_gradebooks_on_student_id"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -62,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "class_rooms_id"
+    t.string "letter_grade"
     t.index ["assignment_id"], name: "index_grades_on_assignment_id"
     t.index ["class_rooms_id"], name: "index_grades_on_class_rooms_id"
     t.index ["gradebook_id"], name: "index_grades_on_gradebook_id"
@@ -79,14 +78,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
     t.string "last_name"
     t.string "age"
     t.string "email"
-    t.integer "teacher_id"
-    t.integer "class_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
-    t.integer "class_room_id"
->>>>>>> parent of f93d5a0... progessing on gradebook functionality
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -97,13 +90,11 @@ ActiveRecord::Schema.define(version: 2020_02_24_172323) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
+  add_foreign_key "assignments", "class_rooms", column: "class_rooms_id"
   add_foreign_key "class_rooms", "teachers"
-  add_foreign_key "gradebooks", "students", column: "students_id"
+  add_foreign_key "gradebooks", "students"
   add_foreign_key "grades", "assignments"
   add_foreign_key "grades", "class_rooms", column: "class_rooms_id"
   add_foreign_key "grades", "gradebooks"
   add_foreign_key "grades", "students"
-=======
->>>>>>> parent of f93d5a0... progessing on gradebook functionality
 end
