@@ -22,6 +22,7 @@ class ClassRoomsController < ApplicationController
     end
 
     def update
+        
         @added_students = []
         params[:students][:ids].each do |student_id|
             if !student_id.empty?

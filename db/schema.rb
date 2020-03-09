@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_182451) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "teacher_id"
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_class_rooms_on_student_id"
     t.index ["teacher_id"], name: "index_class_rooms_on_teacher_id"
   end
 
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_182451) do
   end
 
   add_foreign_key "assignments", "class_rooms", column: "class_rooms_id"
+  add_foreign_key "class_rooms", "students"
   add_foreign_key "class_rooms", "teachers"
   add_foreign_key "gradebooks", "students"
   add_foreign_key "grades", "assignments"
