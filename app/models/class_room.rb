@@ -3,6 +3,7 @@ class ClassRoom < ApplicationRecord
     has_many :grades
     has_many :students
     has_many :assignments
+    has_many :student_assignments, source: :gradebook
     has_many :gradebooks, through: :grades
     
     validates :subject, presence: true
@@ -30,4 +31,5 @@ class ClassRoom < ApplicationRecord
         full
     end
 
+    
 end

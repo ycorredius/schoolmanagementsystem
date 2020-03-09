@@ -1,4 +1,9 @@
 
-<%= form_tag [@class_room,@assignment] do |f| %>
-    
+<%= form_for [@class_room,@assignment] do |f| %>
+    <%= f.hidden_field :class_room_id %>
+    <%= f.label :title, 'Title' %>
+    <br>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.submit %>
 <% end %>

@@ -1,5 +1,6 @@
 class Assignment < ApplicationRecord
     belongs_to :class_room
-    belongs_to :teacher 
-    has_many :gradebooks 
+    has_many :gradebooks, through: 
+    has_one :student_grade, through: :grade
+    has_many :students, source: :grade
 end

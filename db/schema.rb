@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_182453) do
+ActiveRecord::Schema.define(version: 2020_03_09_204507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_182453) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "number_grade"
     t.bigint "class_room_id"
+    t.integer "number_grade"
+    t.bigint "grade_id"
     t.index ["class_room_id"], name: "index_assignments_on_class_room_id"
+    t.index ["grade_id"], name: "index_assignments_on_grade_id"
   end
 
   create_table "class_rooms", force: :cascade do |t|
@@ -54,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_182453) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "student_id"
+    t.bigint "assignment_id"
+    t.index ["assignment_id"], name: "index_gradebooks_on_assignment_id"
     t.index ["student_id"], name: "index_gradebooks_on_student_id"
   end
 
@@ -97,9 +101,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_182453) do
   end
 
   add_foreign_key "assignments", "class_rooms"
+  add_foreign_key "assignments", "grades"
   add_foreign_key "class_rooms", "assignments"
   add_foreign_key "class_rooms", "students"
   add_foreign_key "class_rooms", "teachers"
+  add_foreign_key "gradebooks", "assignments"
   add_foreign_key "gradebooks", "students"
   add_foreign_key "grades", "assignments"
   add_foreign_key "grades", "class_rooms", column: "class_rooms_id"
