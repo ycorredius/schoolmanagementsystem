@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :class_rooms do
     resources :gradebooks
+    resources :assignments
     get 'add_student', to: 'class_rooms#new_students'
     post 'new_student', to: 'class_rooms#added_students'
   end

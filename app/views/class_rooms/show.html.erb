@@ -9,5 +9,6 @@
 <% if !@class_room.is_full %>
     <%= link_to 'Add Students', class_room_add_student_path(@class_room) %>
 <% end %>
-
-<%= link_to 'Class Assingments', calss %>
+<br>
+<br>
+<%= link_to 'Class Assingments', class_room_assignments_path(@class_room.id) %>
