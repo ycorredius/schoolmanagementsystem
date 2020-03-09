@@ -2,7 +2,7 @@ class ClassRoom < ApplicationRecord
     belongs_to :teacher
     has_many :grades
     has_many :students
-    has_many :assignments, through: :grades
+    has_many :assignments
     has_many :gradebooks, through: :grades
     
     validates :subject, presence: true

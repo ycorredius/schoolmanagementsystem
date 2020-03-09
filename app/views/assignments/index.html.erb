@@ -1,0 +1,13 @@
+<h1><%= @class_room.subject %></h1>
+
+<% if @class_room.assignments.empty? %>
+    <h3>No assignments yet</h3>
+<% else %>
+    <ul>
+    <% @class_room.assignments.each do |assignement| %>
+    <li><%= assignment.title %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= link_to "Create Assignment", new_class_room_assignment_path %>

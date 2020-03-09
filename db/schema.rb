@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_182452) do
+ActiveRecord::Schema.define(version: 2020_03_09_182453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_03_09_182452) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "class_rooms_id"
     t.integer "number_grade"
-    t.index ["class_rooms_id"], name: "index_assignments_on_class_rooms_id"
+    t.bigint "class_room_id"
+    t.index ["class_room_id"], name: "index_assignments_on_class_room_id"
   end
 
   create_table "class_rooms", force: :cascade do |t|
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_182452) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "assignments", "class_rooms", column: "class_rooms_id"
+  add_foreign_key "assignments", "class_rooms"
   add_foreign_key "class_rooms", "assignments"
   add_foreign_key "class_rooms", "students"
   add_foreign_key "class_rooms", "teachers"

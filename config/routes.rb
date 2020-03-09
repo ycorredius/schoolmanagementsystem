@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   end
   resources :class_rooms do
     resources :gradebooks
-    resources :assignments
     get 'add_student', to: 'class_rooms#new_students'
     post 'new_student', to: 'class_rooms#added_students'
+  end
+  resources :class_rooms do 
+    resources :assignments
+    post "class_rooms/:id/assignments/new", to: "assignments#create"
   end
 
   resources :teachers do
@@ -30,5 +33,4 @@ Rails.application.routes.draw do
   resources :gradebooks do
     resources :assignments
   end
-
 end

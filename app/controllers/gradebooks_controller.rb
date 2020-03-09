@@ -1,7 +1,6 @@
 class GradebooksController < ApplicationController
     before_action :student_gradebook, only: [:show]
     def show
-        binding.pry
         @student.gradebook
     end
 
