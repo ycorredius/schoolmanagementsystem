@@ -22,23 +22,23 @@ class ClassRoomsController < ApplicationController
     end
 
     def update
-    #     @added_students = []
-    #     params[:students][:ids].each do |student_id|
-    #         if !student_id.empty?
-    #             found_student = Student.find_by(id: student_id)
-    #             if found_student
-    #                 @added_students << found_student
-    #             end
-    #         end
-    #     end
-    #     @class_room.add_students(@added_students)
-    #     redirect_to class_room_path(@class_room.id)
-    # end
+        @added_students = []
+        params[:students][:ids].each do |student_id|
+            if !student_id.empty?
+                found_student = Student.find_by(id: student_id)
+                if found_student
+                    @added_students << found_student
+                end
+            end
+        end
+        @class_room.add_students(@added_students)
+        redirect_to class_room_path(@class_room.id)
+    end
 
-    # def new_students
-    #     @students = Student.all
-    #     @class_room = ClassRoom.find_by(id: params[:class_room_id])
-    # end
+    def new_students
+        @students = Student.all
+        @class_room = ClassRoom.find_by(id: params[:class_room_id])
+    end
 
     def find_classroom
         @class_room = ClassRoom.find_by(id: params[:id])

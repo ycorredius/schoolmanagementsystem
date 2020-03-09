@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<h1>Classes Menu</h1>
-
-<h3>Classes Open</h3>
-    <ul>
-        <% if @class_rooms.empty? %>
-            <p>No classes Open</p>
-        <% else %>
-            <% @class_rooms.each do |class_room| %>
-                <p><%= link_to class_room.name, class_room_path(class_room.id) %></p>
-            <% end %>
-        <% end %>
-    </ul>
-=======
 <h1>Classes Menu</h1>
 
 <h3>Classes Open</h3>
@@ -24,5 +10,4 @@
             <% end %>
         <% end %>
     </ul>
->>>>>>> refs/remotes/origin/master
 <p><%= link_to "Add new class", new_class_room_path %></p>

@@ -1,36 +1,11 @@
-<<<<<<< HEAD
-<h1><%= @class_room.name %></h1>
-
-
-<p><strong>Teahcer <%= @class_room.teacher.name %></strong></p>
-<% if !@class_room.students.empty? %>
-    <ul>
-    <% @class_room.students.each do |student| %>
-        <p><%= link_to student.name%></p>
-    <% end %>
-</ul>
-<% else %>
-    <p>No students currently</p>
-<% end %> 
-<% if !@class_room.is_full %>
-    <%= link_to 'Add Students', add_student_path %>
-<% end %>
-=======
 <h1><%= @class_room.subject %></h1>
 
 <%= @class_room.teacher.name %>
 
 <p><strong>Teahcer <%= @class_room.teacher.name %></strong></p>
-<% if !@class_rooms.students.nil? ||@class_rooms.students%>
-    <ul>
     <% @class_room.students.each do |student| %>
         <p><%= link_to student.name, student_gradebook_path(student.id) %></p>
     <% end %>
-</ul>
-<% else %>
-    <p>No students currently</p>
-<% end %> 
 <% if !@class_room.is_full %>
     <%= link_to 'Add Students', class_room_add_student_path(@class_room) %>
 <% end %>
->>>>>>> refs/remotes/origin/master
