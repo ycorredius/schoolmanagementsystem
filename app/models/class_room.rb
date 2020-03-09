@@ -1,15 +1,26 @@
 class ClassRoom < ApplicationRecord
     belongs_to :teacher
-    has_one :gradebook
+    has_many :grades
     has_many :students
-    has_many :assignments, through: :gradebook
+    has_many :assignments, through: :grades
+    has_many :gradebooks, through: :grades
+    
+    validates :subject, presence: true
+    accepts_nested_attributes_for :students
+    
+    
 
-    def add_student(student_obj)
-        if self.size > 0
-            self.students << student_obj
-            self.size = size - 1
-        end
-    end
+    # def add_students(student_obj)
+    #     if self.size > 0
+    #         student_obj.each do |student|
+    #             self.students << student
+    #             self.size = size - 1
+    #             if is_full
+    #                 break
+    #             end
+    #         end
+    #     end
+    # end
 
     def is_full
         full = false
@@ -18,4 +29,5 @@ class ClassRoom < ApplicationRecord
         end
         full
     end
+
 end

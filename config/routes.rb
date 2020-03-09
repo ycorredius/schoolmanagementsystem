@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :grades
+  resources :create_grades_tables
   devise_for :admins do
     get '/', to: 'devise/session#new'
   end
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   end
   resources :class_rooms do
     resources :gradebooks
+    get 'add_student', to: 'class_rooms#new_students'
+    post 'new_student', to: 'class_rooms#added_students'
   end
 
   resources :teachers do
@@ -26,5 +30,4 @@ Rails.application.routes.draw do
     resources :assignments
   end
 
-  get 'add_student', to: 'class_rooms#add_students_to_class'
 end

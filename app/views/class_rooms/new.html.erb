@@ -1,13 +1,23 @@
 <h1>Add Class</h1>
 <%= form_for @class_room do |f| %>
+<<<<<<< HEAD
     <%= f.label :name, 'Class Name' %>
     <br>
     <%= f.text_field :name %>
+=======
+    <%= f.label :subject, 'Class Name' %>
+    <br>
+    <%= f.text_field :subject %>
+>>>>>>> refs/remotes/origin/master
     <br>
     <br>
     <%= f.label :teacher_id, 'Select Teacher' %>
     <br>
+<<<<<<< HEAD
     <%= collection_select(:class_room, :teacher_id, Teacher.all, :id,:name) %>
+=======
+    <%= collection_select(:class_room, :teacher_id, Teacher.all,:id,:name) %>
+>>>>>>> refs/remotes/origin/master
     <br>
     <br>
     <%= f.submit %>

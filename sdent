@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /mnt/d/Users/ycorr/dev/flatiron/projects/schoolmanagementsystem/app/views/class_rooms/show.html.erb @ line 8 #<Class:0x00007f9ee237e3e8>#_app_views_class_rooms_show_html_erb__2104428344089884541_70160176534320:
+
+     [1;34m3[0m: 
+     [1;34m4[0m: <p><strong>Teahcer <%= @class_room.teacher.name %></strong></p>
+     [1;34m5[0m: <% if @class_room.students %>
+     [1;34m6[0m:     <ul>
+     [1;34m7[0m:     <% @class_room.students.each do |student| %>
+ =>  [1;34m8[0m:         <%= binding.pry %>
+     [1;34m9[0m:         <p><%= link_to student.name, student_gradebook_path(student.id) %></p>
+    [1;34m10[0m:     <% end %>
+    [1;34m11[0m: </ul>
+    [1;34m12[0m: <% else %>
+    [1;34m13[0m:     <p>No students currently</p>
+

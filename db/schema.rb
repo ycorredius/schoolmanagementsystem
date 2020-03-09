@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_174011) do
+ActiveRecord::Schema.define(version: 2020_03_09_023600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_174011) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "school_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -29,33 +30,45 @@ ActiveRecord::Schema.define(version: 2020_02_25_174011) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
-    t.string "number_grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "class_rooms_id"
+    t.integer "number_grade"
+    t.index ["class_rooms_id"], name: "index_assignments_on_class_rooms_id"
   end
 
   create_table "class_rooms", force: :cascade do |t|
     t.integer "size", default: 20
-    t.string "name"
-    t.integer "teacher_id"
-    t.integer "student_id"
+    t.string "subject"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "gradebook_id"
+    t.bigint "teacher_id"
+    t.index ["teacher_id"], name: "index_class_rooms_on_teacher_id"
   end
 
   create_table "gradebooks", force: :cascade do |t|
-    t.string "letter_grade"
-    t.integer "class_room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "assignment_id"
-    t.integer "grades_id"
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_gradebooks_on_student_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "gradebook_id", null: false
+    t.bigint "assignment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "class_rooms_id"
+    t.string "letter_grade"
+    t.index ["assignment_id"], name: "index_grades_on_assignment_id"
+    t.index ["class_rooms_id"], name: "index_grades_on_class_rooms_id"
+    t.index ["gradebook_id"], name: "index_grades_on_gradebook_id"
+    t.index ["student_id"], name: "index_grades_on_student_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
     t.string "title"
-    t.integer "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,18 +80,21 @@ ActiveRecord::Schema.define(version: 2020_02_25_174011) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "class_room_id"
-    t.index ["class_room_id"], name: "index_students_on_class_room_id"
   end
 
   create_table "teachers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-    t.integer "qualification_id"
   end
 
-  add_foreign_key "students", "class_rooms"
+  add_foreign_key "assignments", "class_rooms", column: "class_rooms_id"
+  add_foreign_key "class_rooms", "teachers"
+  add_foreign_key "gradebooks", "students"
+  add_foreign_key "grades", "assignments"
+  add_foreign_key "grades", "class_rooms", column: "class_rooms_id"
+  add_foreign_key "grades", "gradebooks"
+  add_foreign_key "grades", "students"
 end
