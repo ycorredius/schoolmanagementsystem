@@ -1,0 +1,10 @@
+<h2>Add students to class</h2>
+<ul>
+    <%= form_for @class_room do |f| %>
+        <%= collection_check_boxes(:students,:ids,Student.all,:id,:name,checked: false) %>    
+        <br>
+        <br>
+        <%= f.submit %>
+    <% end %>
+</ul>
+    

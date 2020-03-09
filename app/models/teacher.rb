@@ -1,6 +1,6 @@
 class Teacher < ApplicationRecord
     has_one :classroom
-    has_many :students, through: :classroom
+    has_many :students, through: :gradebooks
     # has_many :qualifications
 
     def name

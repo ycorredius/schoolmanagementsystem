@@ -1,3 +1,5 @@
 class Assignment < ApplicationRecord
-    has_many :gradebooks, :as => :grades
+    belongs_to :class_room
+    belongs_to :teacher 
+    has_many :gradebooks 
 end

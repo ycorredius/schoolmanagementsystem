@@ -6,7 +6,7 @@
             <p>No classes Open</p>
         <% else %>
             <% @class_rooms.each do |class_room| %>
-                <p><%= link_to class_room.name, class_room_path(class_room.id) %></p>
+                <p><%= link_to class_room.subject, class_room_path(class_room.id) %></p>
             <% end %>
         <% end %>
     </ul>

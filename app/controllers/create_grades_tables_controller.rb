@@ -1,0 +1,2 @@
+class CreateGradesTablesController < ApplicationController
+end
