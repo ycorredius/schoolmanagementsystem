@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_204507) do
+ActiveRecord::Schema.define(version: 2020_03_09_223413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_assignment_student_tables", force: :cascade do |t|
+    t.bigint "assignment_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assignment_id"], name: "index_add_assignment_student_tables_on_assignment_id"
+    t.index ["student_id"], name: "index_add_assignment_student_tables_on_student_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -100,6 +109,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_204507) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "add_assignment_student_tables", "assignments"
+  add_foreign_key "add_assignment_student_tables", "students"
   add_foreign_key "assignments", "class_rooms"
   add_foreign_key "assignments", "grades"
   add_foreign_key "class_rooms", "assignments"

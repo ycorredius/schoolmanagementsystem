@@ -1,10 +1,10 @@
-<h1><%= @class_room.subject %></h1>
+<h1><%= @student.assignments %></h1>
 
 <% if @class_room.assignments.empty? %>
     <h3>No assignments yet</h3>
 <% else %>
     <ul>
-    <% @class_room.assignments.each do |assignement| %>
+    <% @class_room.assignments.each do |assignment| %>
     <li><%= assignment.title %></li>
     <% end %>
     </ul>

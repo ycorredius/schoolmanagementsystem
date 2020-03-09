@@ -1,0 +1,2 @@
+class AddAssignmentStudentTablesController < ApplicationController
+end

@@ -3,8 +3,7 @@ class ClassRoom < ApplicationRecord
     has_many :grades
     has_many :students
     has_many :assignments
-    has_many :student_assignments, source: :gradebook
-    has_many :gradebooks, through: :grades
+    has_many :gradebooks, through: :students
     
     validates :subject, presence: true
     accepts_nested_attributes_for :students
@@ -12,6 +11,7 @@ class ClassRoom < ApplicationRecord
     
 
     def add_students(student_obj)
+        binding.pry
         if self.size > 0
             student_obj.each do |student|
                 self.students << student

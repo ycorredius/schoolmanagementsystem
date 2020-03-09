@@ -2,17 +2,22 @@ class AssignmentsController < ApplicationController
     before_action :find_classroom, only: [:index,:new,:create]
     
     def index
+        binding.pry
     end
 
     def new
         @assignment = @class_room.assignments.build
     end
     def create
-        @assignment = Assignment.new(assignment_parms)
+        binding.pry
+        @assignment = @class_room.assignments.build(assignment_params)
         if @assignment.save
             @class_room.students.each do |student|
-                student.get_assignment(@assignment)
+                
             end
+            redirect_to class_room_assignments_path(@class_room.id)
+        else
+            render :new
         end
     end
 
@@ -22,7 +27,7 @@ class AssignmentsController < ApplicationController
 
     private
 
-    def assignment_parms
+    def assignment_params
         params.require(:assignment).permit(:title,:class_room_id)
     end
 end

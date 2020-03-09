@@ -1,7 +1,6 @@
 class Student < ApplicationRecord
-    has_one :gradebook
+    # has_one :gradebook
     has_many :class_rooms
-    has_many :grades , through: :gradebook
     has_many :teachers, through: :class_rooms
     has_many :assignments, through: :class_rooms
 
@@ -13,4 +12,7 @@ class Student < ApplicationRecord
         self.first_name + " "+ self.last_name
     end
 
+    def self.assignments
+        binding.pry
+    end
 end

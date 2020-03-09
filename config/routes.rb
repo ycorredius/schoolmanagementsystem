@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :add_assignment_student_tables
   resources :grades
   resources :create_grades_tables
   devise_for :admins do
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
   resources :class_rooms do
-    resources :students
+    resources :students do
+      resources :assignments
+    end
   end
   resources :class_rooms do
     resources :gradebooks
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :students do
     resources :gradebooks
+    resources :assignments
   end
   resources :gradebooks do
     resources :assignments

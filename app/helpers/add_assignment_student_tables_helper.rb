@@ -1,0 +1,2 @@
+module AddAssignmentStudentTablesHelper
+end
