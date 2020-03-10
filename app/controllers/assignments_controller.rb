@@ -1,21 +1,19 @@
 class AssignmentsController < ApplicationController
     before_action :find_classroom, only: [:index,:new,:create]
-    
     def index
-        binding.pry
     end
 
     def new
         @assignment = @class_room.assignments.build
     end
     def create
-        binding.pry
         @assignment = @class_room.assignments.build(assignment_params)
         if @assignment.save
+            binding.pry
             @class_room.students.each do |student|
-                
+                student.assignments << @assignment
             end
-            redirect_to class_room_assignments_path(@class_room.id)
+            redirect_to class_room_path(@class_room.id)
         else
             render :new
         end

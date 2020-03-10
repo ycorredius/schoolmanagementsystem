@@ -10,7 +10,7 @@ class ClassRoomsController < ApplicationController
     end
 
     def create
-        @class_room = ClassRoom.new(class_params).build_gradebook()
+        @class_room = ClassRoom.new(class_params)
         if @class_room.save
             redirect_to class_room_path(@class_room.id)
         else
@@ -22,7 +22,6 @@ class ClassRoomsController < ApplicationController
     end
 
     def update
-        
         @added_students = []
         params[:students][:ids].each do |student_id|
             if !student_id.empty?

@@ -11,7 +11,6 @@ class ClassRoom < ApplicationRecord
     
 
     def add_students(student_obj)
-        binding.pry
         if self.size > 0
             student_obj.each do |student|
                 self.students << student

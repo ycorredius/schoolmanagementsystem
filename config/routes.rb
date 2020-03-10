@@ -31,8 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    resources :gradebooks
-    resources :assignments
+    resources :grades
   end
   resources :gradebooks do
     resources :assignments
