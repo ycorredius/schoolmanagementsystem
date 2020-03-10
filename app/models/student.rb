@@ -2,8 +2,7 @@ class Student < ApplicationRecord
     has_many :grades
     has_many :class_rooms
     has_many :teachers, through: :class_rooms
-    has_many :assignments, through: :grades
-
+    has_many :assignments, through: :class_rooms
 
     validates :email, uniqueness: true
     
