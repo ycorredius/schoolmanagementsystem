@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_223413) do
+ActiveRecord::Schema.define(version: 2020_03_18_134658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_223413) do
     t.bigint "class_room_id"
     t.integer "number_grade"
     t.bigint "grade_id"
+    t.integer "student_id"
     t.index ["class_room_id"], name: "index_assignments_on_class_room_id"
     t.index ["grade_id"], name: "index_assignments_on_grade_id"
   end
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_223413) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "class_room_id"
+    t.integer "assignment_id"
     t.index ["class_room_id"], name: "index_students_on_class_room_id"
   end
 

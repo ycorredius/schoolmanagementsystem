@@ -29,5 +29,8 @@ class ClassRoom < ApplicationRecord
         full
     end
 
+    def assignment_to_students
+        binding.pry
+    end
     
 end
