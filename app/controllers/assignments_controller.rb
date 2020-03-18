@@ -10,7 +10,6 @@ class AssignmentsController < ApplicationController
     def create
         @assignment = @class_room.assignments.build(assignment_params)
         if @assignment.save
-            binding.pry
             @class_room.students.each do |student|
                 student.assignments << @assignment
             end
