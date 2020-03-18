@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pry'
+gem "nokogiri", ">= 1.10.8"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
