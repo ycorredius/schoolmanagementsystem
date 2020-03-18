@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
     before_action :find_classroom, only: [:index,:new,:create]
     def index
+        
     end
 
     def new
@@ -18,7 +19,7 @@ class AssignmentsController < ApplicationController
             render :new
         end
     end
-
+    
     def find_classroom
         @class_room = ClassRoom.find_by(id: params[:class_room_id])
     end

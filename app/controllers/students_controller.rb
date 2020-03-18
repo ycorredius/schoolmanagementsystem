@@ -1,6 +1,10 @@
 class StudentsController < ApplicationController
     before_action :find_student, only: [:show,:edit,:update,:delete]
     
+    def assignments
+        @student = Student.find_by(id:params[:student_id])
+    end
+
     def index
         @students = Student.all
     end

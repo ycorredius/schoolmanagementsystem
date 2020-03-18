@@ -31,9 +31,10 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    resources :grades
+    get '/assignments', to: 'students#assignments'
   end
   resources :gradebooks do
     resources :assignments
   end
+  
 end
