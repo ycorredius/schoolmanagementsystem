@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
     before_action :find_student, only: [:show,:edit,:update,:delete]
     
     def assignments
+        
         @student = Student.find_by(id:params[:student_id])
     end
 
@@ -19,6 +20,7 @@ class StudentsController < ApplicationController
     def create
         @student = Student.new(student_params)
         if @student.save
+            @student.gradebook.create
             redirect_to student_path(@student)
         else
             render :new

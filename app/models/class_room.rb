@@ -3,6 +3,7 @@ class ClassRoom < ApplicationRecord
     has_many :grades
     has_many :students
     has_many :assignments
+    has_many :class_assignments, through: :assignments
     
     validates :subject, presence: true
     accepts_nested_attributes_for :students

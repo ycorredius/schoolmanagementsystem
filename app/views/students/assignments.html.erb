@@ -1,6 +1,10 @@
 <h1><%= @student.name %></h1>
 <ul>
-<% @student.assignments.each do |assignment| %>
+<% if @student.assignments.empty? %>
+    <p>No assignment available</p>
+<% else %>
+    <% @student.assignments.each do |assignment| %>
         <li><%= assignment.title %></li>
+    <% end %>
 <% end %>
 </ul>

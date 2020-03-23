@@ -17,6 +17,4 @@ Student.create([
     {first_name:"bill", last_name:'doe' , email:'sometemp5@email.com' , age: 20} ,{first_name:"jaden", last_name:'doe' , email:'sometemp8@email.com' , age: 20 },{first_name:"jame", last_name:'doe' , email:'sometemp17@email.com' , age: 20 },{first_name:"shaq", last_name:'doe' , email:'sometemp20@email.com' , age: 20 },
     {first_name:"will", last_name:'doe' , email:'sometemp6@email.com' , age: 20} ,{first_name:"aden", last_name:'doe' , email:'sometemp7@email.com' , age: 20 },{first_name:"peter", last_name:'doe' , email:'sometemp18@email.com' , age: 20 },{first_name:"josh", last_name:'doe' , email:'sometemp19@email.com' , age: 20 }])
 
-Student.all.each do |student|
-    student.create_gradebook
-end
+

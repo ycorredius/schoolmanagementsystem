@@ -31,6 +31,7 @@ class ClassRoomsController < ApplicationController
                 end
             end
         end
+        binding.pry
         @class_room.add_students(@added_students)
         redirect_to class_room_path(@class_room.id)
     end
