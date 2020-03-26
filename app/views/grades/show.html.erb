@@ -1,0 +1,11 @@
+
+<h1><%= @grade.student.name %></h1>
+<h2><%= @grade.assignment.title %></h2>
+<%= form_for @grade do |f| %>
+    <%= f.label :letter_grade, 'Grade' %>
+    <%= f.text_field :letter_grade %>
+    <%= f.hidden_field :assignment_id %>
+    <%= f.hidden_field :class_room_id %>
+    <%= f.hidden_field :student_id %>
+    <%= f.submit %>
+<% end %>

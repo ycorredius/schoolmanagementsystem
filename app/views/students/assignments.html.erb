@@ -4,7 +4,7 @@
     <p>No assignment available</p>
 <% else %>
     <% @student.assignments.each do |assignment| %>
-        <li><%= assignment.title %></li>
+        <li><%= assignment.title %> - <%= assignment.grades.find_by(assignment_id: assignment.id).letter_grade %> <%= link_to "Grade Assignment", assignment_grade_path(assignment.id) %></li>
     <% end %>
 <% end %>
 </ul>

@@ -6,7 +6,8 @@ class TeachersController < ApplicationController
         @teacher = Teacher.new
     end
     def show
-       @teacher = Teacher.find_by(id: params[:id]) 
+       @teacher = Teacher.find_by(id: params[:id])
+       @class_room = ClassRoom.find_by(id: @teacher.class_room)
     end
     def create
         @teacher = Teacher.new(teacher_params)

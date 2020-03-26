@@ -1,3 +1,17 @@
 <h2>Hello, <%= @teacher.name %></h2>
 
-    pr
+<h3>Class</h3>
+<% if !@teacher.class_room.nil? %>
+   <h4><%= @teacher.class_room.subject %></h4>
+        <% if @class_room.students.nil? %>
+            <ul>
+                <p>No students assigned to class yet</p>
+            </ul>
+        <% else %>
+            <% @teacher.class_room.students.each do |student| %>
+                <p><%= link_to student.name, student_assignments_path(student.id) %></p>
+            <% end %>
+        <% end %>
+<% else %>
+    <p>No class assigned yet</p>
+<% end %>

@@ -2,7 +2,9 @@ class AssignmentsController < ApplicationController
     before_action :find_classroom, only: [:index,:new,:create]
     def index
     end
-
+    def def show
+        binding.pry
+    end
     def new
         @assignment = @class_room.assignments.build
     end
