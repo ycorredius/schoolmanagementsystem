@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_134658) do
+ActiveRecord::Schema.define(version: 2020_03_25_122043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,15 +73,12 @@ ActiveRecord::Schema.define(version: 2020_03_18_134658) do
 
   create_table "grades", force: :cascade do |t|
     t.bigint "student_id", null: false
-    t.bigint "gradebook_id", null: false
     t.bigint "assignment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "class_rooms_id"
     t.string "letter_grade"
+    t.bigint "class_room_id"
     t.index ["assignment_id"], name: "index_grades_on_assignment_id"
-    t.index ["class_rooms_id"], name: "index_grades_on_class_rooms_id"
-    t.index ["gradebook_id"], name: "index_grades_on_gradebook_id"
     t.index ["student_id"], name: "index_grades_on_student_id"
   end
 
@@ -121,8 +118,6 @@ ActiveRecord::Schema.define(version: 2020_03_18_134658) do
   add_foreign_key "gradebooks", "assignments"
   add_foreign_key "gradebooks", "students"
   add_foreign_key "grades", "assignments"
-  add_foreign_key "grades", "class_rooms", column: "class_rooms_id"
-  add_foreign_key "grades", "gradebooks"
   add_foreign_key "grades", "students"
   add_foreign_key "students", "class_rooms"
 end

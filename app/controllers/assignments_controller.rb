@@ -9,10 +9,11 @@ class AssignmentsController < ApplicationController
     def create
         @assignment = @class_room.assignments.create(assignment_params)
         if @assignment.save
-            binding.pry
             @class_room.students.each do |student|
-                binding.pry
-                student.assignments << @assignment
+                student.grades.build
+                student.grades.last.assignment = @assignment
+                student.grades.last.class_room = @class_room
+                student.grades.last.save
             end
             redirect_to class_room_path(@class_room.id)
         else
